@@ -1,0 +1,61 @@
+{
+  "name": "pebble-harmony",
+  "author": "MakeAwesomeHappen",
+  "version": "1.0.0",
+  "keywords": [
+    "pebble-app"
+  ],
+  "private": true,
+  "dependencies": {
+    "harmonyhubjs-client": "^1.1.8",
+    "harmonyhubjs-discover": "^1.0.2"
+  },
+  "pebble": {
+    "displayName": "pebble-harmony",
+    "uuid": "100c5cb7-3d1b-4a7d-8b5b-ac8ae8b5ff53",
+    "sdkVersion": "3",
+    "projectType": "pebblejs",
+    "resources": {
+      "media": [
+        {
+          "file": "images/menu_icon.png",
+          "name": "IMAGE_MENU_ICON",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/logo_splash.png",
+          "name": "IMAGE_LOGO_SPLASH",
+          "type": "bitmap"
+        },
+        {
+          "file": "images/tile_splash.png",
+          "name": "IMAGE_TILE_SPLASH",
+          "type": "bitmap"
+        },
+        {
+          "file": "fonts/UbuntuMono-Regular.ttf",
+          "name": "MONO_FONT_14",
+          "type": "font"
+        },
+        {
+          "file": "images/logo28.png",
+          "menuIcon": true,
+          "name": "IMAGES_LOGO28_PNG",
+          "type": "png"
+        }
+      ]
+    },
+    "targetPlatforms": [
+      "aplite",
+      "basalt",
+      "chalk"
+    ],
+    "watchapp": {
+      "hiddenApp": false,
+      "watchface": false
+    },
+    "messageKeys": [
+      "dummy"
+    ]
+  }
+}
