@@ -10,33 +10,60 @@ var HarmonyHubDiscover = require('harmonyhubjs-discover');
 var harmony = require('harmonyhubjs-client');
 var discover = new HarmonyHubDiscover(61991);
 
-var main = new UI.Menu({
-    sections: [{
-        items: []
-    }]
+discover.on('online', function(hub) {
+    // Triggered when a new hub was found
+    console.log('discovered ' + hub.ip);
 });
-main.on('select', function (e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-    discover.stop();
+
+discover.on('offline', function(hub) {
+    // Triggered when a hub disappeared
+    console.log('lost ' + hub.ip);
 });
+
+var main = new UI.Card({
+    title: 'Pebble.js',
+    icon: 'images/menu_icon.png',
+    subtitle: 'Hello World!',
+    body: 'Press any button.',
+    subtitleColor: 'indigo', // Named colors
+    bodyColor: '#9a0036' // Hex colors
+});
+
+main.on('click', 'up', function(e) {
+    discover.start();
+    console.log('Click!');
+});
+
 main.show();
 
-discover.on('update', function (hubs) {
-    var menuItems = hubs.reduce(function (items, hub) {
-        return items.push({
-            title: hub.friendlyName,
-            subtitle: hub.ip
-        });
-    }, []);
+/*
+ var main = new UI.Menu({
+ sections: [{
+ items: []
+ }]
+ });
+ main.on('select', function (e) {
+ console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
+ console.log('The item is titled "' + e.item.title + '"');
+ discover.stop();
+ });
+ main.show();
 
-    main.sections.items = menuItems;
-    main.show();
-});
+ discover.on('update', function (hubs) {
+ var menuItems = hubs.reduce(function (items, hub) {
+ return items.push({
+ title: hub.friendlyName,
+ subtitle: hub.ip
+ });
+ }, []);
 
-// Look for hubs:
-discover.start();
+ main.sections.items = menuItems;
+ main.show();
+ });
 
+ // Look for hubs:
+ discover.start();
+ */
 /*var main = new UI.Card({
  title: 'Pebble.js',
  icon: 'images/menu_icon.png',
